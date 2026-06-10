@@ -1,461 +1,557 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elysia</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Inter',sans-serif;
-  background:#050507;
-  color:white;
-  overflow-x:hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Elysia product | C++ VS Python Cheats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* BACKGROUND */
-.bg-glow{ position:fixed; width:800px;height:800px;
-  background:radial-gradient(circle,#7c5cff55,transparent 70%);
-  filter:blur(140px); top:-300px; left:-200px; }
-.bg-glow2{ position:fixed; width:700px;height:700px;
-  background:radial-gradient(circle,#b16bff44,transparent 70%);
-  filter:blur(140px); bottom:-200px; right:-200px; }
-.grid{ position:fixed; inset:0;
-  background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                   linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size:40px 40px; z-index:-1; }
+    body {
+      background: radial-gradient(circle at 40% 30%, #6e6b60, #3b3a33);
+      font-family: 'Inter', 'Space Grotesk', sans-serif;
+      color: #f0f0f4;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-/* CURSOR GLOW */
-.cursor-glow{
-  position:fixed; width:250px;height:250px;
-  border-radius:50%;
-  background:radial-gradient(circle,#8b5cff55,transparent 70%);
-  filter:blur(30px);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  z-index:0;
-}
+    .glow-orb {
+      position: fixed;
+      width: 70vw;
+      height: 70vw;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb1 { top: -20vh; left: -20vw; background: radial-gradient(circle, rgba(70,130,200,0.25), rgba(80,80,100,0.1)); }
+    .orb2 { bottom: -30vh; right: -15vw; background: radial-gradient(circle, rgba(100,180,250,0.2), rgba(60,60,70,0.05)); }
+    
+    .cursor-glow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(59,130,246,0) 70%);
+      border-radius: 50%;
+      filter: blur(50px);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: transform 0.02s linear;
+    }
 
-/* NAV */
-nav{
-  position:fixed;
-  top:20px; left:50%;
-  transform:translateX(-50%);
-  z-index:1000;
-}
-.nav-inner{
-  display:flex;
-  gap:10px;
-  padding:10px 18px;
-  border-radius:999px;
-  background:rgba(20,20,30,0.75);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,0.08);
-}
-.nav-inner a{
-  padding:8px 16px;
-  border-radius:999px;
-  color:#aaa;
-  text-decoration:none;
-  transition:.25s;
-}
-.nav-inner a:hover{
-  background:rgba(255,255,255,0.08);
-  color:white;
-}
-.donate-nav{
-  background:linear-gradient(135deg,#7c5cff,#b16bff);
-  color:white!important;
-}
+    .grid-pattern {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,245,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,245,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* SECTIONS + анимация появления */
-section{
-  max-width:1000px;
-  margin:auto;
-  padding:120px 20px 40px;
-  text-align:center;
-  opacity:0;
-  transform:translateY(20px);
-  transition:0.5s ease-out;
-}
-section.show{
-  opacity:1;
-  transform:translateY(0);
-}
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem 4rem;
+      position: relative;
+      z-index: 5;
+    }
 
-/* HERO */
-.hero h1{
-  font-size:3rem;
-  background:linear-gradient(90deg,#9b8cff,#d6aaff,#7c5cff);
-  background-size:200%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:gradient 4s infinite linear;
-}
-@keyframes gradient{
-  0%{background-position:0%}
-  100%{background-position:200%}
-}
-.hero img{
-  margin-top:30px;
-  width:280px;
-  border-radius:40px;
-  box-shadow:0 20px 60px rgba(120,90,255,0.25);
-}
+    nav {
+      position: sticky;
+      top: 1.2rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+    .glass-nav {
+      background: rgba(50, 48, 44, 0.55);
+      backdrop-filter: blur(18px);
+      border-radius: 3rem;
+      border: 1px solid rgba(100,150,230,0.35);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      flex: 1;
+    }
+    .glass-nav a {
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: #eef2ff;
+      border-radius: 2rem;
+      transition: 0.25s;
+      font-size: 0.95rem;
+    }
+    .glass-nav a:hover {
+      background: rgba(59,130,246,0.35);
+      color: white;
+      box-shadow: 0 0 12px rgba(59,130,246,0.5);
+    }
+    .donate-nav, .buy-nav {
+      background: linear-gradient(120deg, #2b6ef0, #1e4bd2);
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(0,100,255,0.3);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      margin-left: 12px;
+      background: rgba(0,0,0,0.3);
+      padding: 4px 12px;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+    }
+    .lang-flag {
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: 0.2s;
+      opacity: 0.7;
+    }
+    .lang-flag.active {
+      opacity: 1;
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 4px #5c9eff);
+    }
 
-/* FEATURES */
-.features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  margin-top:30px;
-}
-.card{
-  padding:20px;
-  border-radius:20px;
-  background:rgba(20,20,30,0.6);
-  border:1px solid rgba(255,255,255,0.08);
-  transition:.3s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 10px 40px rgba(140,120,255,0.25);
-}
+    section {
+      margin: 4rem 0 5rem;
+      scroll-margin-top: 6rem;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* PREVIEW */
-.preview{
-  margin-top:10px;
-}
-.tilt img{
-  width:650px;
-  border-radius:14px;
-  transition:0.25s;
-  box-shadow:0 10px 40px rgba(120,90,255,0.3);
-}
-/* вкладки ручного выбора */
-.tabs{
-  margin-top:15px;
-  display:none;
-}
-.tabs span{
-  display:inline-block;
-  margin:5px;
-  padding:6px 14px;
-  border-radius:30px;
-  background:rgba(255,255,255,0.08);
-  cursor:pointer;
-  transition:0.2s;
-}
-.tabs span:hover{
-  background:#7c5cff;
-  color:white;
-}
+    h1 { font-size: 3.2rem; margin-bottom: 0.6rem; }
+    h2 { font-size: 2rem; margin-bottom: 1.8rem; display: inline-block; position: relative; color: #f0f3fa; }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #a0c4ff);
+      border-radius: 4px;
+    }
+    .badge {
+      background: rgba(59,130,246,0.2);
+      border-radius: 2rem;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #d9e6ff;
+      border: 0.5px solid rgba(100,150,255,0.5);
+      backdrop-filter: blur(4px);
+    }
+    .hero { text-align: center; padding: 1rem 0; }
+    
+    /* Лого вместо алмаза */
+    .custom-logo {
+      max-width: 100px;
+      max-height: 100px;
+      width: auto;
+      height: auto;
+      margin: 0 auto 0.8rem;
+      filter: drop-shadow(0 0 12px rgba(59,130,246,0.5));
+      transition: transform 0.2s;
+    }
+    .custom-logo:hover {
+      transform: scale(1.02);
+    }
 
-/* MODE */
-.mode{
-  margin:10px 0;
-}
-.mode button{
-  margin:5px;
-  padding:8px 14px;
-  border-radius:999px;
-  border:none;
-  cursor:pointer;
-  background:rgba(255,255,255,0.05);
-  color:white;
-  transition:.2s;
-}
-.mode button.active{
-  background:#7c5cff;
-  box-shadow:0 0 15px #7c5cffaa;
-}
+    .main-product {
+      background: rgba(35, 35, 40, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: 2.5rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(100,150,255,0.4);
+      transition: 0.35s;
+    }
+    .main-product:hover { border-color: #5c9eff; transform: translateY(-6px); }
+    .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.6rem; font-weight: 700; }
+    .feature-list { list-style: none; margin: 1rem 0; }
+    .feature-list li { margin: 0.7rem 0; display: flex; align-items: center; gap: 0.7rem; font-size: 1rem; color: #eceef5; }
+    .feature-list li i { color: #5c9eff; width: 1.6rem; }
 
-/* DONATE TABS */
-.donate-methods{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:15px;
-}
-.donate-method{
-  padding:8px 16px;
-  border-radius:999px;
-  cursor:pointer;
-  color:white;
-  transition:.25s;
-}
-.donate-method.sbp{ background:linear-gradient(135deg,#00ff99,#00cc66); color:#000; }
-.donate-method.cardTab{ background:linear-gradient(135deg,#00c6ff,#0072ff); }
-.donate-method.da{ background:linear-gradient(135deg,#ff9a00,#ff6a00); }
-.donate-method.active{ box-shadow:0 0 20px rgba(255,255,255,0.3); }
-.hidden{ display:none; }
+    .other-projects { background: rgba(45, 43, 38, 0.4); border-radius: 2rem; padding: 2rem; margin: 3rem 0 2rem; backdrop-filter: blur(6px); }
+    .other-title { display: flex; align-items: center; gap: 12px; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600; color: #f2f4fc; }
+    .secondary-card { background: rgba(50, 48, 45, 0.65); backdrop-filter: blur(8px); border-radius: 2rem; padding: 1.6rem; border: 1px solid rgba(100,150,255,0.3); transition: 0.25s; }
+    .secondary-card:hover { border-color: #5c9eff; transform: translateY(-3px); }
 
-/* CONTACT — обновлённые кнопки Discord и YouTube */
-.contact a{
-  display:inline-block;
-  margin:10px;
-  padding:12px 25px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.25s;
-}
-/* Кнопка Discord — синяя */
-.discord-btn {
-  background:#5865F2;
-  color:white;
-}
-.discord-btn:hover {
-  background:#4752c4;
-  transform:translateY(-2px);
-}
-/* Кнопка YouTube — красная */
-.youtube-btn {
-  background:#FF0000;
-  color:white;
-}
-.youtube-btn:hover {
-  background:#cc0000;
-  transform:translateY(-2px);
-}
-/* Общий стиль для donate-btn (не меняется) */
-.donate-btn{
-  margin-top:20px;
-  padding:14px 35px;
-  border:none;
-  border-radius:999px;
-  background:linear-gradient(135deg,#9b6bff,#6f7cff);
-  color:white;
-  cursor:pointer;
-}
+    .cheat-gallery { background: rgba(30, 30, 35, 0.5); border-radius: 2rem; padding: 1.5rem; margin-top: 1rem; backdrop-filter: blur(6px); }
+    .mode-buttons { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; }
+    .mode-btn { background: rgba(255,255,245,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1.8rem; border-radius: 3rem; font-weight: 500; cursor: pointer; color: #eef; transition: 0.2s; }
+    .mode-btn.active { background: #1e4bd2; color: white; border-color: #3b82f6; box-shadow: 0 0 12px #3b82f6; }
+    .preview-image { text-align: center; margin: 1rem 0; }
+    .preview-image img { max-width: 100%; max-height: 70vh; width: auto; height: auto; object-fit: contain; border-radius: 1.5rem; box-shadow: 0 12px 28px rgba(0,0,0,0.4); border: 1px solid rgba(100,150,255,0.5); background: #1f2128; }
+    .tabs-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1rem; }
+    .tab-btn { background: rgba(60, 60, 70, 0.7); padding: 0.4rem 1rem; border-radius: 2rem; cursor: pointer; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(150,180,255,0.4); color: #eef; }
+    .tab-btn:hover { background: #3b82f6; color: white; }
 
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.7);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-.modal.active{ display:flex; }
-.modal-content{
-  background:#0f0f1a;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  width:90%;
-  max-width:420px;
-}
+    .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .contact-card { background: rgba(35, 35, 40, 0.8); border-radius: 2rem; padding: 1rem 2rem; display: inline-flex; align-items: center; gap: 0.8rem; text-decoration: none; font-weight: 600; transition: 0.25s; border: 1px solid rgba(100,150,255,0.4); backdrop-filter: blur(4px); }
+    .discord-btn { color: #9bb9ff; } .discord-btn:hover { background: #5865f2; color: white; }
+    .youtube-btn { color: #ff8383; } .youtube-btn:hover { background: #ff0000; color: white; }
+    .buy-contact-btn { background: linear-gradient(120deg, #2b6ef0, #1e4bd2); color: white !important; }
+    .donate-main-btn { background: linear-gradient(100deg, #2b6ef0, #1e4bd2); border: none; padding: 0.8rem 2rem; border-radius: 3rem; font-weight: 600; color: white; cursor: pointer; box-shadow: 0 6px 14px rgba(30,75,210,0.5); transition: 0.2s; }
+    .donate-main-btn:hover { transform: scale(1.02); }
 
-footer{
-  text-align:center;
-  padding:30px;
-  opacity:0.5;
-}
-
-/* ===== ИСПРАВЛЕНИЕ ДЛЯ ТЕЛЕФОНА: горизонтальный скролл навигации ===== */
-@media (max-width: 600px) {
-  nav {
-    width: calc(100% - 20px);
-    left: 10px;
-    transform: none;
-  }
-  .nav-inner {
-    overflow-x: auto;
-    white-space: nowrap;
-    width: 100%;
-    justify-content: flex-start;
-    scrollbar-width: thin;
-  }
-  .nav-inner::-webkit-scrollbar {
-    height: 4px;
-  }
-  .nav-inner::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-  }
-  .nav-inner::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.3);
-    border-radius: 10px;
-  }
-}
-</style>
+    .modal { position: fixed; inset: 0; background: rgba(20,20,28,0.85); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 1000; visibility: hidden; opacity: 0; transition: 0.2s; }
+    .modal.active { visibility: visible; opacity: 1; }
+    .modal-content { background: #24242e; border-radius: 2rem; max-width: 440px; width: 90%; padding: 1.8rem; text-align: center; border: 1px solid #3b82f6; color: #f0f2f8; }
+    .donate-methods { display: flex; justify-content: center; gap: 0.6rem; margin: 1rem 0; }
+    .donate-method { padding: 0.4rem 1rem; border-radius: 2rem; cursor: pointer; background: #2f3542; font-weight: 500; color: #ddd; }
+    .donate-method.active { background: #3b82f6; color: white; }
+    .hidden-block { display: none; }
+    footer { text-align: center; margin-top: 5rem; color: #bcbcbc; font-size: 0.8rem; }
+    @media (max-width: 750px) {
+      .container { padding: 0.5rem 1rem 2rem; }
+      h1 { font-size: 2.2rem; }
+      .glass-nav { flex-direction: column; align-items: stretch; }
+      .nav-links { justify-content: center; }
+      .lang-switch { justify-content: center; margin-left: 0; margin-top: 6px; }
+      .custom-logo { max-width: 70px; }
+    }
+  </style>
 </head>
 <body>
+<div class="glow-orb orb1"></div>
+<div class="glow-orb orb2"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="grid-pattern"></div>
 
-<div class="bg-glow"></div>
-<div class="bg-glow2"></div>
-<div class="grid"></div>
-<div class="cursor-glow" id="cursor"></div>
-
-<nav>
-  <div class="nav-inner">
-    <a href="#home">Главная</a>
-    <a href="#features">Возможности</a>
-    <a href="#preview">Осмотр</a>
-    <a href="#contact">Контакты</a>
-    <a href="#" class="donate-nav openDonate">Пожертвовать</a>
-  </div>
-</nav>
-
-<section id="home" class="hero">
-  <h1>Elysia Product</h1>
-  <img src="product.png" alt="product">
-</section>
-
-<section id="features">
-  <h2>Возможности</h2>
-  <div class="features">
-    <div class="card">⚡ Aimbot</div>
-    <div class="card">👁 Visuals</div>
-    <div class="card">🎯 Triggerbot</div>
-    <div class="card">⚙️ Movement</div>
-    <div class="card">🧠 Config</div>
-    <div class="card">🚀 Boost</div>
-  </div>
-</section>
-
-<section id="preview" class="preview">
-  <h2>Осмотр</h2>
-  <div class="mode">
-    <button id="autoBtn" class="active">Авто</button>
-    <button id="manualBtn">Сам</button>
-  </div>
-  <div class="tilt">
-    <img id="img" src="aimbot.png" alt="preview">
-  </div>
-  <div class="tabs" id="tabs">
-    <span onclick="setImg(0)">aimbot</span>
-    <span onclick="setImg(1)">visuals</span>
-    <span onclick="setImg(2)">triggerbot</span>
-    <span onclick="setImg(3)">misc</span>
-    <span onclick="setImg(4)">movement</span>
-    <span onclick="setImg(5)">config</span>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <h2>Контакты</h2>
-  <a href="https://discord.gg/89FxFHfzcb" target="_blank" class="discord-btn"><i class="fab fa-discord"></i> Discord</a>
-  <a href="https://www.youtube.com/channel/UCqPFUQnTgFoQYXtSd-dVNnQ" target="_blank" class="youtube-btn"><i class="fab fa-youtube"></i> YouTube</a>
-  <br>
-  <button class="donate-btn openDonate">Пожертвовать</button>
-</section>
-
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h3>Пожертвовать</h3>
-    <div class="donate-methods">
-      <div id="sbpTab" class="donate-method sbp active" onclick="selectTab('sbpTab')">QR-код (СБП)</div>
-      <div id="cardTab" class="donate-method cardTab" onclick="selectTab('cardTab')">💳 Карта</div>
-      <div id="daTab" class="donate-method da" onclick="selectTab('daTab')">Donation Alerts</div>
+<div class="container">
+  <nav>
+    <div class="glass-nav">
+      <div class="nav-links">
+        <a href="#home" data-i18n="nav_home">Главная</a>
+        <a href="#mainProduct" data-i18n="nav_v3">Elysia V3</a>
+        <a href="#otherProjects" data-i18n="nav_other">Другие проекты</a>
+        <a href="#contact" data-i18n="nav_contact">Контакты</a>
+        <a href="#" class="donate-nav" id="donateBtnNav" data-i18n="nav_donate">Пожертвовать</a>
+        <a href="#" class="buy-nav" id="buyBtnNav" data-i18n="nav_buy">Купить программное обеспечение | Связаться</a>
+      </div>
+      <div class="lang-switch">
+        <span class="lang-flag active" data-lang="ru">🇷🇺</span>
+        <span class="lang-flag" data-lang="en">🇺🇸</span>
+      </div>
     </div>
-    <div id="sbpBlock"><img src="QR.png" style="max-width:200px" alt="qr"></div>
-    <div id="cardBlock" class="hidden"><p>2202 2067 9598 8174 | Sberbank | Isa</p></div>
-    <div id="daBlock" class="hidden"><a href="https://www.donationalerts.com/r/elysiaproduct" target="_blank">Перейти на Donation Alerts</a></div>
-    <button onclick="closeModal()">Закрыть</button>
+  </nav>
+
+  <section id="home" class="hero">
+    <!-- Вместо алмаза — ваше лого. По умолчанию logo.png, замените путь на свой файл -->
+    <img src="logo.png" alt="Logo" class="custom-logo" id="customLogo">
+    <h1><span data-i18n="hero_title1">Elysia product</span> <span style="color:#7f9eff;" data-i18n="hero_title2">V3 Core</span></h1>
+    <p data-i18n="hero_sub">Два поколения читов для самых требовательных. Elysia V3 — максимальная скорость и обход | Python Classic — гибкость и стабильность.</p>
+    <div class="badge" data-i18n="hero_badge">✨ Полнофункциональный ПО external • 100% Обход Анти-Чита</div>
+  </section>
+
+  <section id="mainProduct">
+    <div class="main-product">
+      <div class="card-header">
+        <i class="fas fa-microchip"></i> <span data-i18n="v3_title"> Elysia External </span>
+        <div class="badge" style="margin-left: auto;" data-i18n="v3_badge">⭐ Флагман</div>
+      </div>
+      <p data-i18n="v3_desc">Нативный драйверный чит с минимальной задержкой. Полный контроль над памятью.</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-bolt"></i> <span data-i18n="v3_feat1">Удобный Aimbot + Prediction + SilentAim</span></li>
+        <li><i class="fas fa-shield-alt"></i> <span data-i18n="v3_feat2">Kernel driver + обход Byfron Technologies | Hyperion Anti-Cheat</span></li>
+        <li><i class="fas fa-chart-line"></i> <span data-i18n="v3_feat3">ESP (Box, Distance, Name, Health bar, Feature Indicator И много прочего)</span></li>
+        <li><i class="fas fa-tachometer-alt"></i> <span data-i18n="v3_feat4">Внутренний рендер через ImGui, 300+ FPS</span></li>
+        <li><i class="fas fa-database"></i> <span data-i18n="v3_feat5">Конфиги с шифрованием, автоматическая загрузка</span></li>
+      </ul>
+      <div class="badge" style="margin-top: 0.5rem;" data-i18n="v3_support">🔥 Приоритетная поддержка • стабильность 24/7</div>
+    </div>
+
+    <div class="cheat-gallery">
+      <div class="mode-buttons">
+        <button id="autoModeBtnV3" class="mode-btn active" data-i18n="auto">🎬 Авто-слайдшоу</button>
+        <button id="manualModeBtnV3" class="mode-btn" data-i18n="manual">🖱️ Ручной выбор</button>
+      </div>
+      <div class="preview-image">
+        <img id="v3PreviewImg" src="V3-1.png" alt="V3 preview">
+      </div>
+      <div id="manualTabsV3" class="tabs-list" style="display: none;">
+        <div class="tab-btn" data-img="V3-1.png">Aimbot</div>
+        <div class="tab-btn" data-img="V3-2.png">Silent</div>
+        <div class="tab-btn" data-img="V3-3.png">Visuals</div>
+        <div class="tab-btn" data-img="V3-4.png">Misc</div>
+        <div class="tab-btn" data-img="V3-5.png">Settings</div>
+        <div class="tab-btn" data-img="V3-6.png">Configs</div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.75rem; text-align: center;"><i class="fas fa-image"></i> <span data-i18n="gallery_v3_caption">Галерея Elysia V3 — ключевые возможности</span></p>
+    </div>
+  </section>
+
+  <section id="otherProjects" class="other-projects">
+    <div class="other-title">
+      <i class="fas fa-layer-group"></i>
+      <span data-i18n="other_title">Другие проекты</span>
+    </div>
+    <div class="secondary-card">
+      <div class="card-header">
+        <i class="fab fa-python"></i> <span data-i18n="py_title">Python Classic external</span>
+      </div>
+      <p data-i18n="py_desc">Скриптовый мультитул с оверхэем и быстрой настройкой под любую игру.</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-crosshairs"></i> <span data-i18n="py_feat1">Магнитный aimbot + предсказание</span></li>
+        <li><i class="fas fa-eye"></i> <span data-i18n="py_feat2">Box, Glow, Chams, Triggerbot на пиксель</span></li>
+        <li><i class="fas fa-laptop-code"></i> <span data-i18n="py_feat3">Поддержка внешнего рендера (Overlay)</span></li>
+        <li><i class="fas fa-cloud-upload-alt"></i> <span data-i18n="py_feat4">Автообновление оффсетов из базы</span></li>
+      </ul>
+      <div class="badge" data-i18n="py_badge">🐍 Лёгкий старт • актуальные сигнатуры за 2 секунды</div>
+    </div>
+
+    <div class="cheat-gallery" style="margin-top: 1.5rem;">
+      <div class="mode-buttons">
+        <button id="autoModeBtnOld" class="mode-btn active" data-i18n="auto">🎬 Авто-слайдшоу</button>
+        <button id="manualModeBtnOld" class="mode-btn" data-i18n="manual">🖱️ Ручной выбор</button>
+      </div>
+      <div class="preview-image">
+        <img id="oldPreviewImg" src="aimbot.png" alt="preview">
+      </div>
+      <div id="manualTabsOld" class="tabs-list" style="display: none;">
+        <div class="tab-btn" data-img="aimbot.png">aimbot</div>
+        <div class="tab-btn" data-img="visuals.png">visuals</div>
+        <div class="tab-btn" data-img="triggerbot.png">triggerbot</div>
+        <div class="tab-btn" data-img="misc.png">misc</div>
+        <div class="tab-btn" data-img="movement.png">movement</div>
+        <div class="tab-btn" data-img="config.png">config</div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.75rem; text-align: center;"><i class="fas fa-info-circle"></i> <span data-i18n="gallery_old_caption">Classic Python — проверенная классика</span></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 data-i18n="contact_title">Связь &amp; поддержка</h2>
+    <div class="contact-links">
+      <a href="https://discord.gg/89FxFHfzcb" target="_blank" class="contact-card discord-btn"><i class="fab fa-discord fa-lg"></i> Discord</a>
+      <a href="https://www.youtube.com/channel/UCqPFUQnTgFoQYXtSd-dVNnQ" target="_blank" class="contact-card youtube-btn"><i class="fab fa-youtube fa-lg"></i> YouTube</a>
+      <a href="#" class="contact-card buy-contact-btn" id="buyBtnContact"><i class="fas fa-shopping-cart"></i> <span data-i18n="nav_buy">Купить программное обеспечение | Связаться</span></a>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <button class="donate-main-btn" id="openDonateModal"><i class="fas fa-heart"></i> <span data-i18n="support_btn">Поддержать проект</span></button>
+    </div>
+  </section>
+  <footer>© 2025-2026 <span data-i18n="footer">Elysia V3 | C++ \ Python</span></footer>
+</div>
+
+<!-- Модалки -->
+<div id="donateModal" class="modal">
+  <div class="modal-content">
+    <h3 data-i18n="donate_title">💎 Поддержка</h3>
+    <div class="donate-methods">
+      <div id="sbpTab" class="donate-method sbp active" onclick="selectDonateTab('sbp')" data-i18n="donate_qr">QR СБП</div>
+      <div id="cardTab" class="donate-method cardTab" onclick="selectDonateTab('card')" data-i18n="donate_card">💳 Карта</div>
+      <div id="daTab" class="donate-method da" onclick="selectDonateTab('da')" data-i18n="donate_da">Donation Alerts</div>
+    </div>
+    <div id="sbpBlock"><img src="QR.png" alt="QR" style="max-width: 170px; border-radius: 1rem;"></div>
+    <div id="cardBlock" class="hidden-block"><p>2202 2067 9598 8174<br><span style="font-size:0.7rem;"> SBERBANK </span></p></div>
+    <div id="daBlock" class="hidden-block"><a href="https://www.donationalerts.com/r/elysiaproduct" target="_blank">Donation Alerts →</a></div>
+    <button onclick="closeModal('donateModal')" data-i18n="close_btn">Закрыть</button>
   </div>
 </div>
 
-<footer>© Elysia Product 2025-2026 </footer>
+<div id="buyModal" class="modal">
+  <div class="modal-content">
+    <i class="fab fa-discord" style="font-size: 3rem; color: #5865F2;"></i>
+    <h3 data-i18n="buy_modal_title">Связь с продавцом</h3>
+    <p data-i18n="buy_modal_text1">Напишите напрямую в Discord:</p>
+    <div style="background: #2f3542; padding: 0.6rem; border-radius: 2rem; margin: 1rem 0; display: inline-block;">
+      <i class="fab fa-discord"></i> <strong style="font-size: 1.2rem;">lurewithcold</strong>
+    </div>
+    <p data-i18n="buy_modal_text2">Или присоединитесь к нашему серверу:</p>
+    <a href="https://discord.gg/89FxFHfzcb" target="_blank" class="contact-card discord-btn" style="display: inline-flex; background: #5865F2; color: white; border: none;">
+      <i class="fab fa-discord"></i> <span data-i18n="discord_server">Discord Server</span>
+    </a>
+    <button onclick="closeModal('buyModal')" data-i18n="close_btn">Закрыть</button>
+  </div>
+</div>
 
 <script>
-// плавная прокрутка для навигации
-document.querySelectorAll('.nav-inner a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    if(targetId === '') return;
-    const target = document.getElementById(targetId);
-    if(target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
+  // ---------- ЛОГО: если картинка не загружена, показываем заглушку ----------
+  const logoImg = document.getElementById('customLogo');
+  if (logoImg) {
+    logoImg.onerror = () => {
+      logoImg.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%233b82f6" rx="20"/%3E%3Ctext x="50" y="67" text-anchor="middle" fill="white" font-size="40" font-weight="bold"%3EEL%3C/text%3E%3C/svg%3E';
+      logoImg.style.maxWidth = '80px';
+    };
+  }
 
-// анимация появления секций при скролле
-const sections = document.querySelectorAll("section");
-function checkSections() {
-  sections.forEach(s => {
-    if(s.getBoundingClientRect().top < window.innerHeight - 100) {
-      s.classList.add("show");
+  // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ----------
+  const translations = {
+    ru: {
+      nav_home: "Главная", nav_v3: "Elysia V3", nav_other: "Другие проекты", nav_contact: "Контакты",
+      nav_donate: "Пожертвовать", nav_buy: "Купить программное обеспечение | Связаться",
+      hero_title1: "Elysia product", hero_title2: "V3 Core",
+      hero_sub: "Два поколения читов для самых требовательных. Elysia V3 — максимальная скорость и обход | Python Classic — гибкость и стабильность.",
+      hero_badge: "✨ Полнофункциональный ПО external • 100% Обход Анти-Чита",
+      v3_title: "ElysiaV3 External", v3_badge: "⭐ Флагман",
+      v3_desc: "Нативный драйверный чит с минимальной задержкой. Полный контроль над игрой и памятью.",
+      v3_feat1: "Удобный Aimbot + Prediction + SilentAim + Hitbox Expander | И много прочего!",
+      v3_feat2: "Kernel driver + обход Byfron Technologies | Hyperion Anti-Cheat",
+      v3_feat3: "Хороший ESP: Box + Distance + Name + Health bar + Feature Indicator | И много прочего!",
+      v3_feat4: "Внутренний рендер через ImGui, 300+ FPS",
+      v3_feat5: "Поддержка, помощь от разработчика в случае проблем, и гарантия",
+      v3_support: "🔥 Приоритетная поддержка • стабильность 24/7",
+      auto: "🎬 Авто-слайдшоу", manual: "🖱️ Ручной выбор",
+      gallery_v3_caption: "Галерея Elysia V3 — ключевые возможности",
+      other_title: "Другие проекты",
+      py_title: "Python Classic external", py_desc: "Скриптовый мультитул с оверхэем и быстрой настройкой под любую игру.",
+      py_feat1: "Магнитный aimbot + предсказание", py_feat2: "Box, Glow, Chams, Triggerbot на пиксель",
+      py_feat3: "Поддержка внешнего рендера (Overlay)", py_feat4: "Автообновление оффсетов из базы",
+      py_badge: "🐍 Лёгкий старт • актуальные сигнатуры за 2 секунды",
+      gallery_old_caption: "Classic Python — проверенная классика",
+      contact_title: "Связь & поддержка", support_btn: "Поддержать проект",
+      footer: "Elysia",
+      donate_title: "💎 Поддержка", donate_qr: "QR СБП", donate_card: "💳 Карта", donate_da: "Donation Alerts",
+      close_btn: "Закрыть", buy_modal_title: "Связь с продавцом", buy_modal_text1: "Напишите напрямую в Discord:",
+      buy_modal_text2: "Или присоединитесь к нашему серверу:", discord_server: "Discord Server"
+    },
+    en: {
+      nav_home: "Home", nav_v3: "Elysia V3", nav_other: "Other Projects", nav_contact: "Contact",
+      nav_donate: "Donate", nav_buy: "Buy Software | Contact",
+      hero_title1: "Elysia product", hero_title2: "V3 Core",
+      hero_sub: "Two generations of cheats for the most demanding. Elysia V3 — max speed & bypass | Python Classic — flexibility & stability.",
+      hero_badge: "✨ Full-featured external software • 100% Anti-Cheat Bypass",
+      v3_title: "C++ Core | Elysia V3 version", v3_badge: "⭐ Flagship",
+      v3_desc: "Native driver cheat with minimal latency. Full memory control.",
+      v3_feat1: "Convenient Aimbot + Prediction + SilentAim + Hitbox Expander | And much more!",
+      v3_feat2: "Kernel driver + bypass Byfron Technologies | Hyperion Anti-Cheat",
+      v3_feat3: "Good ESP: Box + Distance + Name + Health bar + Feature Indicator | And much more!",
+      v3_feat4: "Internal ImGui render, 300+ FPS",
+      v3_feat5: "Support, help from the developer in case of problems, and a guarantee",
+      v3_support: "🔥 Priority support • 24/7 stability",
+      auto: "🎬 Auto slideshow", manual: "🖱️ Manual select",
+      gallery_v3_caption: "Elysia V3 gallery — key features",
+      other_title: "Other Projects",
+      py_title: "Python Classic external", py_desc: "Scripting multitool with overlay and fast game adaptation.",
+      py_feat1: "Magnetic aimbot + prediction", py_feat2: "Box, Glow, Chams, Pixel Triggerbot",
+      py_feat3: "External render (Overlay) support", py_feat4: "Auto-update offsets from database",
+      py_badge: "🐍 Easy start • fresh signatures in 2 seconds",
+      gallery_old_caption: "Classic Python — proven classic",
+      contact_title: "Contact & Support", support_btn: "Support the project",
+      footer: "Elysia",
+      donate_title: "💎 Radiant Support", donate_qr: "QR SBP", donate_card: "💳 Card", donate_da: "Donation Alerts",
+      close_btn: "Close", buy_modal_title: "Contact seller", buy_modal_text1: "Write directly on Discord:",
+      buy_modal_text2: "Or join our server:", discord_server: "Discord Server"
     }
-  });
-}
-window.addEventListener("scroll", checkSections);
-checkSections();
-
-// модалка
-const modal = document.getElementById("modal");
-document.querySelectorAll(".openDonate").forEach(btn => {
-  btn.onclick = (e) => {
-    e.preventDefault();
-    modal.classList.add("active");
   };
-});
-function closeModal() { modal.classList.remove("active"); }
 
-// курсор
-const cursor = document.getElementById("cursor");
-window.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-
-// переключение картинок
-const imgs = ["aimbot.png","visuals.png","triggerbot.png","misc.png","movement.png","config.png"];
-let i = 0;
-let auto = true;
-const imgEl = document.getElementById("img");
-let interval = setInterval(() => {
-  if(auto) {
-    i = (i+1) % imgs.length;
-    imgEl.src = imgs[i];
+  let currentLang = 'ru';
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = translations[lang][key];
+        else el.innerText = translations[lang][key];
+      }
+    });
+    document.querySelectorAll('.lang-flag').forEach(flag => {
+      flag.classList.remove('active');
+      if ((lang === 'ru' && flag.getAttribute('data-lang') === 'ru') ||
+          (lang === 'en' && flag.getAttribute('data-lang') === 'en')) {
+        flag.classList.add('active');
+      }
+    });
   }
-}, 1700);
+  document.querySelectorAll('.lang-flag').forEach(flag => {
+    flag.addEventListener('click', () => setLanguage(flag.getAttribute('data-lang')));
+  });
+  setLanguage('ru');
 
-function setImg(x) {
-  if(!auto) {
-    i = x;
-    imgEl.src = imgs[i];
+  // ---------- ГАЛЕРЕИ, МОДАЛКИ, СВЕЧЕНИЕ ----------
+  const cursorGlow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', (e) => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+  });
+
+  function initGallery(imagesArray, previewImgId, autoBtnId, manualBtnId, tabsContainerId) {
+    let currentIndex = 0, isAuto = true, interval = null;
+    const preview = document.getElementById(previewImgId);
+    const autoBtn = document.getElementById(autoBtnId);
+    const manualBtn = document.getElementById(manualBtnId);
+    const tabsContainer = document.getElementById(tabsContainerId);
+    function updatePreview(index) {
+      if (index >= 0 && index < imagesArray.length) {
+        currentIndex = index;
+        preview.src = imagesArray[index];
+        preview.onerror = function() { this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23222'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%238ab3ff' font-size='14'%3E${imagesArray[index]}%3C/text%3E%3C/svg%3E`; };
+      }
+    }
+    function startAuto() { if (interval) clearInterval(interval); interval = setInterval(() => { updatePreview((currentIndex+1)%imagesArray.length); }, 1800); }
+    function stopAuto() { if (interval) { clearInterval(interval); interval = null; } }
+    autoBtn.addEventListener('click', () => { isAuto = true; autoBtn.classList.add('active'); manualBtn.classList.remove('active'); if (tabsContainer) tabsContainer.style.display = 'none'; startAuto(); });
+    manualBtn.addEventListener('click', () => { isAuto = false; autoBtn.classList.remove('active'); manualBtn.classList.add('active'); if (tabsContainer) tabsContainer.style.display = 'flex'; stopAuto(); });
+    const tabButtons = tabsContainer ? tabsContainer.querySelectorAll('.tab-btn') : [];
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => { if (!isAuto) { const img = btn.getAttribute('data-img'); const idx = imagesArray.findIndex(i => i === img); if (idx !== -1) updatePreview(idx); } });
+    });
+    updatePreview(0); startAuto();
   }
-}
 
-// переключение режимов
-const autoBtn = document.getElementById("autoBtn");
-const manualBtn = document.getElementById("manualBtn");
-const tabsDiv = document.getElementById("tabs");
+  const v3Images = ["V3-1.png","V3-2.png","V3-3.png","V3-4.png","V3-5.png","V3-6.png"];
+  const oldImages = ["aimbot.png","visuals.png","triggerbot.png","misc.png","movement.png","config.png"];
+  initGallery(v3Images, 'v3PreviewImg', 'autoModeBtnV3', 'manualModeBtnV3', 'manualTabsV3');
+  initGallery(oldImages, 'oldPreviewImg', 'autoModeBtnOld', 'manualModeBtnOld', 'manualTabsOld');
 
-autoBtn.onclick = () => {
-  auto = true;
-  autoBtn.classList.add("active");
-  manualBtn.classList.remove("active");
-  tabsDiv.style.display = "none";
-};
-manualBtn.onclick = () => {
-  auto = false;
-  manualBtn.classList.add("active");
-  autoBtn.classList.remove("active");
-  tabsDiv.style.display = "block";
-};
+  function openModal(id) { document.getElementById(id).classList.add('active'); }
+  window.closeModal = (id) => { document.getElementById(id).classList.remove('active'); };
+  document.querySelectorAll('#donateBtnNav, #openDonateModal').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openModal('donateModal'); }));
+  document.getElementById('donateModal').addEventListener('click', (e) => { if (e.target === document.getElementById('donateModal')) closeModal('donateModal'); });
+  document.querySelectorAll('#buyBtnNav, #buyBtnContact').forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openModal('buyModal'); }));
+  document.getElementById('buyModal').addEventListener('click', (e) => { if (e.target === document.getElementById('buyModal')) closeModal('buyModal'); });
 
-// вкладки пожертвований
-function selectTab(tabId) {
-  document.querySelectorAll('.donate-method').forEach(el => el.classList.remove('active'));
-  document.getElementById('sbpBlock').classList.add('hidden');
-  document.getElementById('cardBlock').classList.add('hidden');
-  document.getElementById('daBlock').classList.add('hidden');
-  document.getElementById(tabId).classList.add('active');
-  if(tabId === 'sbpTab') document.getElementById('sbpBlock').classList.remove('hidden');
-  if(tabId === 'cardTab') document.getElementById('cardBlock').classList.remove('hidden');
-  if(tabId === 'daTab')  document.getElementById('daBlock').classList.remove('hidden');
-}
-selectTab('sbpTab');
+  window.selectDonateTab = (tab) => {
+    document.querySelectorAll('.donate-method').forEach(el => el.classList.remove('active'));
+    document.getElementById('sbpBlock').classList.add('hidden-block');
+    document.getElementById('cardBlock').classList.add('hidden-block');
+    document.getElementById('daBlock').classList.add('hidden-block');
+    if (tab === 'sbp') { document.getElementById('sbpTab').classList.add('active'); document.getElementById('sbpBlock').classList.remove('hidden-block'); }
+    else if (tab === 'card') { document.getElementById('cardTab').classList.add('active'); document.getElementById('cardBlock').classList.remove('hidden-block'); }
+    else { document.getElementById('daTab').classList.add('active'); document.getElementById('daBlock').classList.remove('hidden-block'); }
+  };
+  const qr = document.querySelector('#sbpBlock img');
+  if (qr) qr.onerror = () => { qr.style.display = 'none'; qr.insertAdjacentHTML('afterend', '<div>⚡ Загрузите QR.png</div>'); };
+
+  document.querySelectorAll('.glass-nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const hash = this.getAttribute('href');
+      if (hash === '#') return;
+      e.preventDefault();
+      const target = document.getElementById(hash.slice(1));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 });
+  sections.forEach(s => observer.observe(s));
+  document.getElementById('home')?.classList.add('visible');
 </script>
-
 </body>
 </html>
