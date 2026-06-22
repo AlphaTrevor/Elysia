@@ -166,6 +166,7 @@
     }
     .hero { text-align: center; padding: 1rem 0; }
     
+    /* Лого вместо алмаза */
     .custom-logo {
       max-width: 100px;
       max-height: 100px;
@@ -200,6 +201,45 @@
     .secondary-card:hover { border-color: #5c9eff; transform: translateY(-3px); }
 
     .cheat-gallery { background: rgba(30, 30, 35, 0.5); border-radius: 2rem; padding: 1.5rem; margin-top: 1rem; backdrop-filter: blur(6px); }
+.video-showcase {
+  margin-top: 25px;
+  padding: 15px;
+  background: rgba(35,35,40,0.55);
+  border: 1px solid rgba(100,150,255,0.35);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.video-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.video-header i {
+  color: #ff0000;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(100,150,255,0.4);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
     .mode-buttons { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; }
     .mode-btn { background: rgba(255,255,245,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1.8rem; border-radius: 3rem; font-weight: 500; cursor: pointer; color: #eef; transition: 0.2s; }
     .mode-btn.active { background: #1e4bd2; color: white; border-color: #3b82f6; box-shadow: 0 0 12px #3b82f6; }
@@ -260,6 +300,7 @@
   </nav>
 
   <section id="home" class="hero">
+    <!-- Вместо алмаза — ваше лого. По умолчанию logo.png, замените путь на свой файл -->
     <img src="logo.png" alt="Logo" class="custom-logo" id="customLogo">
     <h1><span data-i18n="hero_title1">Elysia product</span> <span style="color:#7f9eff;" data-i18n="hero_title2">V3 Core</span></h1>
     <p data-i18n="hero_sub">Два поколения читов для самых требовательных. Elysia V3 — максимальная скорость и обход | Python Classic — гибкость и стабильность.</p>
@@ -301,6 +342,23 @@
       </div>
       <p style="margin-top: 1rem; font-size: 0.75rem; text-align: center;"><i class="fas fa-image"></i> <span data-i18n="gallery_v3_caption">Галерея Elysia V3 — ключевые возможности</span></p>
     </div>
+<div class="video-showcase">
+  <div class="video-header">
+    <i class="fab fa-youtube"></i>
+    <span>Montage Clipped Elysia V3</span>
+  </div>
+
+  <div class="video-container">
+<iframe
+    width="100%"
+    height="500"
+    src="https://www.youtube-nocookie.com/embed/dNvG-L-ykVc?rel=0"
+    title="Elysia V3 Showcase"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+  </div>
+</div>
   </section>
 
   <section id="otherProjects" class="other-projects">
@@ -356,6 +414,7 @@
   <footer>© 2025-2026 <span data-i18n="footer">Elysia V3 | C++ \ Python</span></footer>
 </div>
 
+<!-- Модалки -->
 <div id="donateModal" class="modal">
   <div class="modal-content">
     <h3 data-i18n="donate_title">💎 Поддержка</h3>
@@ -388,6 +447,7 @@
 </div>
 
 <script>
+  // ---------- ЛОГО: если картинка не загружена, показываем заглушку ----------
   const logoImg = document.getElementById('customLogo');
   if (logoImg) {
     logoImg.onerror = () => {
@@ -396,6 +456,7 @@
     };
   }
 
+  // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ----------
   const translations = {
     ru: {
       nav_home: "Главная", nav_v3: "Elysia V3", nav_other: "Другие проекты", nav_contact: "Контакты",
@@ -478,6 +539,7 @@
   });
   setLanguage('ru');
 
+  // ---------- ГАЛЕРЕИ, МОДАЛКИ, СВЕЧЕНИЕ ----------
   const cursorGlow = document.getElementById('cursorGlow');
   document.addEventListener('mousemove', (e) => {
     cursorGlow.style.left = e.clientX + 'px';
