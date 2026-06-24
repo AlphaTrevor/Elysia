@@ -166,7 +166,6 @@
     }
     .hero { text-align: center; padding: 1rem 0; }
     
-    /* Лого вместо алмаза */
     .custom-logo {
       max-width: 100px;
       max-height: 100px;
@@ -300,7 +299,6 @@
   </nav>
 
   <section id="home" class="hero">
-    <!-- Вместо алмаза — ваше лого. По умолчанию logo.png, замените путь на свой файл -->
     <img src="logo.png" alt="Logo" class="custom-logo" id="customLogo">
     <h1><span data-i18n="hero_title1">Elysia product</span> <span style="color:#7f9eff;" data-i18n="hero_title2">V3 Core</span></h1>
     <p data-i18n="hero_sub">Два поколения читов для самых требовательных. Elysia V3 — максимальная скорость и обход | Python Classic — гибкость и стабильность.</p>
@@ -431,7 +429,6 @@
   <footer>© 2025-2026 <span data-i18n="footer">Elysia legit :) </span></footer>
 </div>
 
-<!-- Модалки -->
 <div id="donateModal" class="modal">
   <div class="modal-content">
     <h3 data-i18n="donate_title">💎 Поддержка</h3>
@@ -464,7 +461,6 @@
 </div>
 
 <script>
-  // ---------- ЛОГО: если картинка не загружена, показываем заглушку ----------
   const logoImg = document.getElementById('customLogo');
   if (logoImg) {
     logoImg.onerror = () => {
@@ -473,7 +469,6 @@
     };
   }
 
-  // ---------- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ----------
   const translations = {
     ru: {
       nav_home: "Главная", nav_v3: "Elysia V3", nav_other: "Другие проекты", nav_contact: "Контакты",
@@ -556,7 +551,6 @@
   });
   setLanguage('ru');
 
-  // ---------- ГАЛЕРЕИ, МОДАЛКИ, СВЕЧЕНИЕ ----------
   const cursorGlow = document.getElementById('cursorGlow');
   document.addEventListener('mousemove', (e) => {
     cursorGlow.style.left = e.clientX + 'px';
